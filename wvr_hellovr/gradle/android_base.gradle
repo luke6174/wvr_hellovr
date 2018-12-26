@@ -1,0 +1,20 @@
+
+android {
+    compileSdkVersion 25
+    buildToolsVersion "25.0.2"
+
+    defaultConfig {
+        minSdkVersion 16
+        targetSdkVersion 23
+        versionName androidGitVersion.name()
+        versionCode androidGitVersion.code()
+
+        def VR_VERSION = versionName + " [" + new Date() + "]"
+        buildConfigField 'String', 'VR_VERSION', "\"${VR_VERSION}\""
+    }
+}
+
+dependencies {
+    compile fileTree(include: ['*.jar'], dir: 'libs')
+    testCompile 'junit:junit:4.12'
+}

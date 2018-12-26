@@ -1,0 +1,55 @@
+def jniDir = "src/main/jni"
+def aarFilename = "wvr_client"
+
+// unzip aar
+def unzipDir = file("${buildDir}/${aarFilename}")
+def aarFile = file("${projectDir}/libs/${aarFilename}.aar")
+if (aarFile != null) {
+    copy {
+        println 'unzip ' + aarFile
+        from zipTree(aarFile)
+        into unzipDir
+    }
+}
+
+android {
+    defaultConfig {
+        externalNativeBuild { ndkBuild {
+            def VR_SDK_ROOT = "${buildDir}/${aarFilename}"
+            arguments "VR_SDK_ROOT=$VR_SDK_ROOT"
+        }}
+        ndk {
+            abiFilters 'armeabi-v7a'
+        }
+    }
+
+    externalNativeBuild {
+        ndkBuild {
+            path "${jniDir}/Android.mk"
+        }
+    }
+
+    buildTypes {
+        release {
+            externalNativeBuild { ndkBuild {
+                arguments "NDK_DEBUG=0"
+            }}
+        }
+        debug {
+            externalNativeBuild { ndkBuild {
+                arguments "NDK_DEBUG=1"
+            }}
+        }
+    }
+}
+
+repositories {
+    flatDir{
+        dirs 'libs'
+    }
+}
+
+dependencies {
+    compile fileTree(include: ['*.jar'], dir: 'libs')
+    compile "com.htc.vr.aar:${aarFilename}@aar"
+}

@@ -1,0 +1,19 @@
+Executable : /home/vrm/vr_build_env/android-ndk-r16b/ndk-build
+arguments : 
+NDK_PROJECT_PATH=null
+APP_BUILD_SCRIPT=/home/vrm/jenkins_workspace/workspace/SVR_SDK_210_release/MatrixVR/packages/samples/client/wvr_hellovr/src/main/jni/Android.mk
+NDK_APPLICATION_MK=/home/vrm/jenkins_workspace/workspace/SVR_SDK_210_release/MatrixVR/packages/samples/client/wvr_hellovr/src/main/jni/Application.mk
+APP_ABI=armeabi-v7a
+NDK_ALL_ABIS=armeabi-v7a
+NDK_DEBUG=0
+APP_PLATFORM=android-23
+NDK_OUT=/home/vrm/jenkins_workspace/workspace/SVR_SDK_210_release/MatrixVR/packages/samples/client/wvr_hellovr/build/intermediates/ndkBuild/release/obj
+NDK_LIBS_OUT=/home/vrm/jenkins_workspace/workspace/SVR_SDK_210_release/MatrixVR/packages/samples/client/wvr_hellovr/build/intermediates/ndkBuild/release/lib
+VR_SDK_ROOT=/home/vrm/jenkins_workspace/workspace/SVR_SDK_210_release/MatrixVR/packages/samples/client/wvr_hellovr/build/wvr_client
+NDK_DEBUG=0
+APP_SHORT_COMMANDS=false
+LOCAL_SHORT_COMMANDS=false
+-B
+-n
+jvmArgs : 
+

@@ -1,0 +1,32 @@
+apply plugin: 'com.android.application'
+apply from: "$projectDir/build_sdk.gradle"
+
+android {
+    compileSdkVersion 25
+    buildToolsVersion "25.0.2"
+
+    defaultConfig {
+        applicationId "com.htc.vr.samples.wvr_hellovr"
+        minSdkVersion 21
+        targetSdkVersion 23
+        versionCode 1
+        versionName "1.0"
+    }
+    
+    signingConfigs {
+        release {}
+    }
+
+    buildTypes {
+        release {
+            minifyEnabled false
+            proguardFiles getDefaultProguardFile('proguard-android.txt'), 'proguard-rules.pro'
+            buildConfigField "boolean", "ENABLE_DEBUG", "false"
+            signingConfig signingConfigs.release
+        }
+
+        debug {
+            buildConfigField "boolean", "ENABLE_DEBUG", "true"
+        }
+    }
+}
